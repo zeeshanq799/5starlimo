@@ -1,0 +1,1986 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Stars Limousine - Premium Transportation Service</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #4CAF50;
+            --dark-green: #2E7D32;
+            --light-green: #81C784;
+            --accent-green: #66BB6A;
+            --navy: #1A2332;
+            --navy-light: #2C3E50;
+            --charcoal: #2D3436;
+            --white: #FFFFFF;
+            --cream: #FAF8F5;
+            --gray-100: #F5F5F5;
+            --gray-300: #E0E0E0;
+            --gray-500: #9E9E9E;
+            --gray-700: #616161;
+            --gray-900: #212121;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-900);
+            background: var(--cream);
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--navy);
+            color: var(--white);
+            padding: 12px 0;
+            font-size: 14px;
+        }
+
+        .top-bar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar-info {
+            display: flex;
+            gap: 32px;
+        }
+
+        .top-bar-info span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Header */
+        header {
+            background: transparent;
+            padding: 20px 0;
+            box-shadow: none;
+            position: absolute;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: background 0.3s ease, padding 0.3s ease;
+        }
+
+        header.scrolled {
+            position: fixed;
+            top: -100px;
+            background: var(--white);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            padding: 15px 0;
+            animation: slideDown 0.3s ease forwards;
+        }
+
+        @keyframes slideDown {
+            to {
+                top: 0;
+            }
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: color 0.3s;
+        }
+
+        header.scrolled .logo {
+            color: var(--navy);
+        }
+
+        .logo span {
+            color: var(--primary-green);
+        }
+
+        nav {
+            display: flex;
+            gap: 36px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 15px;
+        }
+
+        header.scrolled nav a {
+            color: var(--gray-700);
+        }
+
+        nav a:hover {
+            color: var(--primary-green);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 3px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        header.scrolled .mobile-menu-btn span {
+            background: var(--navy);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 68px;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            padding: 20px 24px;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--gray-300);
+            transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--primary-green);
+        }
+
+        .mobile-menu .cta-header {
+            border: none;
+            text-align: center;
+        }
+
+        .cta-header {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--white) !important;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .cta-header:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(76, 175, 80, 0.4);
+            color: var(--white) !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: 100px 24px 80px;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-bg-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            z-index: 1;
+            animation: kenburns 12s ease-out;
+        }
+
+        @keyframes kenburns {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.12);
+            }
+        }
+
+        .hero-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(26, 35, 50, 0.75), rgba(44, 62, 80, 0.75));
+            z-index: 0;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+            padding: 0 24px;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .booking-form {
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-content h1 {
+            font-size: 58px;
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content h1 span {
+            color: var(--primary-green);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 19px;
+            color: var(--white);
+            margin-bottom: 16px;
+            line-height: 1.7;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-subtitle {
+            color: var(--light-green);
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-phone {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--white);
+            padding: 18px 36px;
+            border-radius: 30px;
+            font-size: 22px;
+            font-weight: 700;
+            text-decoration: none;
+            margin-top: 32px;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+            align-self: flex-start;
+        }
+
+        .hero-phone:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(76, 175, 80, 0.5);
+        }
+
+        /* Booking Form */
+        .booking-form {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 450px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .booking-form h3 {
+            font-size: 24px;
+            margin-bottom: 24px;
+            color: var(--navy);
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--gray-700);
+            font-size: 13px;
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--gray-300);
+            border-radius: 10px;
+            font-size: 14px;
+            transition: all 0.3s;
+            background: var(--white);
+        }
+
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .passenger-luggage-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .passenger-section label,
+        .luggage-section label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .counter-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .counter-control button {
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--gray-300);
+            background: var(--white);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s;
+            color: var(--gray-700);
+        }
+
+        .counter-control button:hover {
+            background: var(--primary-green);
+            border-color: var(--primary-green);
+            color: var(--white);
+        }
+
+        .counter-control input {
+            width: 50px;
+            text-align: center;
+            padding: 8px;
+            border: 1px solid var(--gray-300);
+            border-radius: 8px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 6px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--primary-green);
+        }
+
+        .checkbox-group label {
+            margin: 0 !important;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--gray-700);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--white);
+            padding: 14px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 8px;
+            box-shadow: 0 4px 15px rgba(201, 169, 97, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(201, 169, 97, 0.4);
+        }
+
+
+        /* Why Choose Us Section */
+        .why-choose-section {
+            padding: 80px 24px;
+            background: var(--white);
+        }
+
+        .why-choose-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-choose-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+        }
+
+        .why-choose-card {
+            text-align: center;
+        }
+
+        .why-choose-image {
+            width: 100%;
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .why-choose-card h3 {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+
+        .why-choose-card p {
+            color: var(--gray-700);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* Section Spacing */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gray-300), transparent);
+            margin: 80px auto;
+            max-width: 800px;
+        }
+
+        /* Vehicle Fleet Section */
+        .vehicles-section {
+            padding: 80px 24px;
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 64px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .section-header p {
+            font-size: 17px;
+            color: var(--gray-700);
+            line-height: 1.7;
+        }
+
+        .vehicles-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .vehicle-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s;
+            border: 1px solid var(--gray-300);
+            position: relative;
+        }
+
+        .vehicle-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .vehicle-card.featured {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            border: none;
+            transform: scale(1.05);
+        }
+
+        .vehicle-card.featured:hover {
+            transform: scale(1.08) translateY(-10px);
+        }
+
+        .vehicle-rating {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--white);
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+        }
+
+        .vehicle-card.featured .vehicle-rating {
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .vehicle-rating::before {
+            content: '⭐';
+        }
+
+        .vehicle-image {
+            height: 280px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 40px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .vehicle-card.featured .vehicle-image {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .vehicle-content {
+            padding: 28px;
+        }
+
+        .vehicle-card.featured .vehicle-content {
+            color: var(--white);
+        }
+
+        .vehicle-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--navy);
+        }
+
+        .vehicle-card.featured .vehicle-name {
+            color: var(--white);
+        }
+
+        .vehicle-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .vehicle-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--gray-700);
+        }
+
+        .vehicle-card.featured .vehicle-feature {
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .vehicle-feature::before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: var(--cream);
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .vehicle-card.featured .vehicle-feature::before {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .vehicle-price {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+        }
+
+        .vehicle-card.featured .vehicle-price {
+            color: var(--white);
+        }
+
+        .book-vehicle-btn {
+            width: 100%;
+            background: var(--navy);
+            color: var(--white);
+            padding: 14px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 15px;
+        }
+
+        .book-vehicle-btn:hover {
+            background: var(--charcoal);
+            transform: translateY(-2px);
+        }
+
+        .vehicle-card.featured .book-vehicle-btn {
+            background: var(--white);
+            color: var(--navy);
+        }
+
+        .vehicle-card.featured .book-vehicle-btn:hover {
+            background: var(--cream);
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 80px 24px;
+            background: var(--cream);
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-image {
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .service-content {
+            padding: 32px;
+        }
+
+        .service-content h3 {
+            font-size: 22px;
+            margin-bottom: 16px;
+            color: var(--navy);
+            font-weight: 700;
+        }
+
+        .service-content p {
+            color: var(--gray-700);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        .learn-more {
+            color: var(--primary-green);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s;
+        }
+
+        .learn-more:hover {
+            gap: 12px;
+        }
+
+        /* Pricing Plans */
+        .pricing-section {
+            padding: 80px 24px;
+            background: var(--white);
+        }
+
+        .pricing-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px 32px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s;
+            border: 2px solid var(--gray-300);
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-green);
+        }
+
+        .pricing-card.popular {
+            background: linear-gradient(135deg, var(--navy), var(--navy-light));
+            color: var(--white);
+            transform: scale(1.05);
+            border: none;
+        }
+
+        .pricing-card.popular:hover {
+            transform: scale(1.08) translateY(-8px);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pricing-card h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: var(--navy);
+            font-weight: 700;
+        }
+
+        .pricing-card.popular h3 {
+            color: var(--white);
+        }
+
+        .pricing-price {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin-bottom: 8px;
+        }
+
+        .pricing-card.popular .pricing-price {
+            color: var(--light-green);
+        }
+
+        .pricing-period {
+            color: var(--gray-500);
+            margin-bottom: 24px;
+            font-size: 15px;
+        }
+
+        .pricing-card.popular .pricing-period {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--gray-700);
+            font-size: 14px;
+        }
+
+        .pricing-card.popular .pricing-features li {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--primary-green);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .pricing-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--white);
+            padding: 14px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 15px;
+        }
+
+        .pricing-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(201, 169, 97, 0.4);
+        }
+
+        .pricing-card.popular .pricing-btn {
+            background: var(--white);
+            color: var(--navy);
+        }
+
+        .pricing-card.popular .pricing-btn:hover {
+            background: var(--cream);
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            padding: 80px 24px;
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .testimonials-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 32px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .testimonial-rating {
+            color: var(--primary-green);
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-text {
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 24px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: var(--white);
+            padding: 64px 24px 24px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--primary-green);
+            font-weight: 700;
+        }
+
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--white);
+        }
+
+        .footer-logo span {
+            color: var(--primary-green);
+        }
+
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .footer-phone {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-top: 12px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 14px;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary-green);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-green);
+            transform: translateY(-3px);
+        }
+
+        /* Masonry Grid Styles */
+        .masonry-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .masonry-grid .service-card[style*="grid-row: span 2"] {
+            grid-row: span 2;
+        }
+
+        /* Destinations */
+        .destinations-section {
+            background: var(--navy-light);
+            padding: 64px 24px;
+        }
+
+        .destinations-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .destinations-container>h3 {
+            font-size: 36px;
+            color: var(--white);
+            margin-bottom: 12px;
+            text-align: center;
+            font-weight: 800;
+        }
+
+        .destinations-subtitle {
+            text-align: center;
+            color: var(--light-green);
+            font-size: 16px;
+            margin-bottom: 48px;
+        }
+
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 32px;
+        }
+
+        .destination-column h4 {
+            color: var(--primary-green);
+            font-size: 16px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--primary-green);
+            font-weight: 700;
+        }
+
+        .destination-column ul {
+            list-style: none;
+        }
+
+        .destination-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .destination-column ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.3s;
+            display: block;
+            padding: 4px 0 4px 8px;
+            border-left: 2px solid transparent;
+        }
+
+        .destination-column ul li a:hover {
+            color: var(--white);
+            border-left-color: var(--primary-green);
+            padding-left: 12px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 24px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .destinations-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .hero-content h1 {
+                font-size: 48px;
+            }
+
+            /* Vehicles grid to 2 columns on tablet */
+            .vehicles-section .vehicles-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .why-choose-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                padding: 60px 24px 60px;
+                min-height: auto;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+            }
+
+            .booking-form {
+                max-width: 100%;
+            }
+
+            .vehicles-grid,
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Fix vehicles grid specifically */
+            .vehicles-grid[style*="grid-template-columns: repeat(4, 1fr)"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Masonry grid responsiveness */
+            .masonry-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .masonry-grid .service-card[style*="grid-row: span 2"] {
+                grid-row: span 1 !important;
+            }
+
+            .chauffeured-services .service-card {
+                grid-row: span 1 !important;
+            }
+
+            .destinations-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .top-bar-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+            }
+
+            .top-bar-info {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .section-header h2 {
+                font-size: 32px;
+            }
+
+            .service-content h3 {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .destinations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 28px;
+            }
+
+            .hero-phone {
+                font-size: 18px;
+                padding: 14px 24px;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            .form-row,
+            .passenger-luggage-row {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header h2 {
+                font-size: 26px;
+            }
+
+            .vehicle-name {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-info">
+                <span>📍 San Francisco Bay Area</span>
+                <span>✉️ [email protected]</span>
+            </div>
+            <div>
+                <span>📞 Call Us: 1-877-435-5466</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                5 STARS <span>LIMO</span>
+            </a>
+            <nav>
+                <a href="#quote">Quote / Reservation</a>
+                <a href="#packages">Package Deals</a>
+                <a href="#services">Services</a>
+                <a href="#wine-tours">Wine Tours</a>
+                <a href="#vehicles">Vehicles</a>
+                <a href="#contact">Contact</a>
+                <a href="#account" class="cta-header">My Account</a>
+            </nav>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#quote">Quote / Reservation</a>
+        <a href="#packages">Package Deals</a>
+        <a href="#services">Services</a>
+        <a href="#wine-tours">Wine Tours</a>
+        <a href="#vehicles">Vehicles</a>
+        <a href="#contact">Contact</a>
+        <a href="#account" class="cta-header">My Account</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Background Slider -->
+        <div class="hero-bg-slider">
+            <div class="hero-slide active"
+                style="background-image: url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1600&h=900&fit=crop');">
+            </div>
+            <div class="hero-slide"
+                style="background-image: url('https://images.unsplash.com/photo-1583508915901-b5f84c1dcde1?w=1600&h=900&fit=crop');">
+            </div>
+            <div class="hero-slide"
+                style="background-image: url('https://images.unsplash.com/photo-1563720360172-67b8f3dce741?w=1600&h=900&fit=crop');">
+            </div>
+        </div>
+
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Premium <span>Transportation</span> for Every Occasion</h1>
+                <p>Experience luxury and reliability with our premium fleet of limousines, sedans, SUVs, and party
+                    buses. Professional chauffeurs, immaculate vehicles, and exceptional service.</p>
+                <p class="hero-subtitle">Serving Northern California Since 2005</p>
+                <a href="tel:1-877-435-5466" class="hero-phone">
+                    📞 1-877-435-5466
+                </a>
+            </div>
+
+            <!-- Booking Form -->
+            <div class="booking-form">
+                <h3>Book Your Ride</h3>
+                <form>
+                    <div class="form-group">
+                        <label>Service Type</label>
+                        <select>
+                            <option>Point to Point Transportation</option>
+                            <option>Hourly Service</option>
+                            <option>Airport Transfer</option>
+                            <option>Wine Tour</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Pick Up Date</label>
+                            <input type="date">
+                        </div>
+                        <div class="form-group">
+                            <label>Pick Up Time</label>
+                            <input type="time">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Pick-Up Location</label>
+                        <input type="text" placeholder="Enter pick up location">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Drop-Off Location</label>
+                        <input type="text" placeholder="Enter drop off location">
+                    </div>
+
+                    <div class="form-group">
+                        <div class="passenger-luggage-row">
+                            <div class="passenger-section">
+                                <label>Passengers</label>
+                                <div class="counter-control">
+                                    <button type="button" onclick="decrementPassengers()">−</button>
+                                    <input type="number" id="passengers" value="1" min="1" readonly>
+                                    <button type="button" onclick="incrementPassengers()">+</button>
+                                </div>
+                            </div>
+                            <div class="luggage-section">
+                                <label>Luggage</label>
+                                <div class="counter-control">
+                                    <button type="button" onclick="decrementLuggage()">−</button>
+                                    <input type="number" id="luggage" value="1" min="0" readonly>
+                                    <button type="button" onclick="incrementLuggage()">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="jettime">
+                            <label for="jettime">Jet time</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="addReturn">
+                            <label for="addReturn">Add Return Trip</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Select Vehicles</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-section">
+        <div class="why-choose-container">
+            <div class="why-choose-grid">
+                <div class="why-choose-card">
+                    <div class="why-choose-image"
+                        style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=400&fit=crop');">
+                    </div>
+                    <h3>Quality</h3>
+                    <p>Delivering accurate, reliable, and compliant financial services with integrity and attention to
+                        detail; ensuring clients' trust, transparency, and long-term success.</p>
+                </div>
+                <div class="why-choose-card">
+                    <div class="why-choose-image"
+                        style="background-image: url('https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&h=400&fit=crop');">
+                    </div>
+                    <h3>Experience</h3>
+                    <p>Extensive experience providing trusted accounting, tax, and financial advisory services with
+                        precision, integrity, and a deep understanding of business needs.</p>
+                </div>
+                <div class="why-choose-card">
+                    <div class="why-choose-image"
+                        style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=400&fit=crop');">
+                    </div>
+                    <h3>Commitment</h3>
+                    <p>Prioritizing your success, we uphold the highest ethical standards and support your business
+                        growth with integrity, accuracy, and precision.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vehicle Fleet Section -->
+    <section class="vehicles-section" id="vehicles">
+        <div class="section-header">
+            <h2>Vehicles</h2>
+            <p style="color: var(--primary-green); font-weight: 600; text-transform: uppercase; letter-spacing: 2px;">
+                Premium Service. Fully Equipped Cars. Professional Drivers</p>
+        </div>
+
+        <div class="vehicles-grid" style="grid-template-columns: repeat(4, 1fr);">
+            <div class="vehicle-card">
+                <div class="vehicle-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=600&h=400&fit=crop'); height: 200px; background-size: contain;">
+                </div>
+                <div class="vehicle-content">
+                    <h3 class="vehicle-name" style="font-size: 20px;">23 Passenger Mini-Coach Bus</h3>
+                    <p style="font-size: 13px; color: var(--gray-700); margin: 12px 0;">Up to 23 passengers / 23
+                        suitcases<br>Starting Hourly Rate: $399.95 + Fuel & Gratuity</p>
+                    <button class="book-vehicle-btn">More Details</button>
+                </div>
+            </div>
+
+            <div class="vehicle-card">
+                <div class="vehicle-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1563720360172-67b8f3dce741?w=600&h=400&fit=crop'); height: 200px; background-size: contain;">
+                </div>
+                <div class="vehicle-content">
+                    <h3 class="vehicle-name" style="font-size: 20px;">Standard Luxury Sedan</h3>
+                    <p style="font-size: 13px; color: var(--gray-700); margin: 12px 0;">Up to 3 passengers / 2
+                        suitcases<br>Starting Hourly Rate: $79.95 + Fuel & Gratuity</p>
+                    <button class="book-vehicle-btn">More Details</button>
+                </div>
+            </div>
+
+            <div class="vehicle-card">
+                <div class="vehicle-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&h=400&fit=crop'); height: 200px; background-size: contain;">
+                </div>
+                <div class="vehicle-content">
+                    <h3 class="vehicle-name" style="font-size: 20px;">Extra Large (XL) SUV</h3>
+                    <p style="font-size: 13px; color: var(--gray-700); margin: 12px 0;">Up to 6 passengers / 6
+                        suitcases<br>Starting Hourly Rate: $99.95 + Fuel & Gratuity</p>
+                    <button class="book-vehicle-btn">More Details</button>
+                </div>
+            </div>
+
+            <div class="vehicle-card">
+                <div class="vehicle-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?w=600&h=400&fit=crop'); height: 200px; background-size: contain;">
+                </div>
+                <div class="vehicle-content">
+                    <h3 class="vehicle-name" style="font-size: 20px;">VIP Stretch Limousine</h3>
+                    <p style="font-size: 13px; color: var(--gray-700); margin: 12px 0;">Up to 8 passengers / 3
+                        suitcases<br>Starting Hourly Rate: $144.95 + Fuel & Gratuity</p>
+                    <button class="book-vehicle-btn">More Details</button>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 48px;">
+            <a href="#" style="color: var(--navy); font-weight: 600; text-decoration: underline;">Load More Fleets</a>
+        </div>
+    </section>
+
+    <!-- Chauffered Services Section -->
+    <section class="services-section chauffeured-services" id="services" style="background: var(--cream);">
+        <div class="section-header">
+            <h2>Chauffeured Black Car Service and Limousine Transportation.</h2>
+            <p style="color: var(--primary-green); font-weight: 600; text-transform: uppercase; letter-spacing: 2px;">
+                Premium Service. Fully Equipped Cars. Professional Drivers</p>
+        </div>
+
+        <div class="masonry-grid"
+            style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;">
+            <!-- Wine Tasting Tour - Takes 2 rows -->
+            <div class="service-card" style="grid-row: span 2; display: flex; flex-direction: column;">
+                <div class="service-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=600&h=400&fit=crop'); flex-grow: 1;">
+                </div>
+                <div class="service-content" style="background: var(--light-green); color: var(--navy);">
+                    <h3>Wine Tasting Tour Transportation</h3>
+                    <p>Embark on an exclusive Private Limousine Wine Tasting Tour through the renowned vineyards of Napa
+                        Valley, Lodi, Livermore, and Sonoma Valley. Whether you're in the San Francisco Bay Area,
+                        Sacramento Metro, or Central Valley, we'll pick you up and take you to some of the region's most
+                        prestigious wineries in style and comfort. Cheers to an unforgettable experience!</p>
+                    <a href="#" class="learn-more" style="color: var(--navy);">Read more →</a>
+                </div>
+            </div>
+
+            <!-- Business Travel -->
+            <div class="service-card">
+                <div class="service-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop'); height: 200px;">
+                </div>
+                <div class="service-content" style="background: var(--light-green); color: var(--navy);">
+                    <h3>Business Travel Transportation</h3>
+                    <p>We provide a bespoke ground transportation plan tailored to meet your business requirements,
+                        offering reliable and efficient services for your corporate travel needs.</p>
+                    <a href="#" class="learn-more" style="color: var(--navy);">Read more →</a>
+                </div>
+            </div>
+
+            <!-- Airport Transfer -->
+            <div class="service-card">
+                <div class="service-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&h=400&fit=crop'); height: 200px;">
+                </div>
+                <div class="service-content" style="background: var(--light-green); color: var(--navy);">
+                    <h3>Experience Airport Transportation in Style.</h3>
+                    <p>Traveling can be hectic, but getting to and from the Alaska airport shouldn't be. We elevate
+                        airport transportation with a seamless, luxurious, and worry-free experience.</p>
+                    <a href="#" class="learn-more" style="color: var(--navy);">Read more →</a>
+                </div>
+            </div>
+
+            <!-- Hourly Charter -->
+            <div class="service-card">
+                <div class="service-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1464219789935-c2d9d9aba644?w=600&h=400&fit=crop'); height: 200px;">
+                </div>
+                <div class="service-content" style="background: var(--accent-green); color: var(--navy);">
+                    <h3>Hourly Charter: Your Time, Your Schedule</h3>
+                    <p>Got a packed day full of meetings, errands, or travel? Booking a professionally chauffeured
+                        limousine or hourly car service is the ideal way to stay on schedule and stress-free.</p>
+                    <a href="#" class="learn-more" style="color: var(--navy);">Read more →</a>
+                </div>
+            </div>
+
+            <!-- Bachelorette Party -->
+            <div class="service-card">
+                <div class="service-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1519167758481-83f29da8c6b7?w=600&h=400&fit=crop'); height: 200px;">
+                </div>
+                <div class="service-content" style="background: #C7E3FF; color: var(--navy);">
+                    <h3>Bachelorette Party Limousine Transportation</h3>
+                    <p>What better way to make it unforgettable than to arrive at any destination with the style that
+                        only a party limousine.</p>
+                    <a href="#" class="learn-more" style="color: var(--navy);">Read more →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wine Tours Section -->
+    <section class="services-section" id="wine-tours" style="background: var(--white); padding: 80px 24px;">
+        <div class="section-header">
+            <h2>Wine Tour and Package Deals</h2>
+            <p style="color: var(--primary-green); font-weight: 600; text-transform: uppercase; letter-spacing: 2px;">
+                Premium Service. Fully Equipped Cars. Professional Drivers</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600&h=400&fit=crop');">
+                </div>
+                <div class="service-content">
+                    <h3>Sonoma Beer Tasting and Brewery Tour</h3>
+                    <p>Discover craft beer in Sonoma county in a safe and reliable private limousine. Many choices are
+                        available.</p>
+                    <div style="font-size: 18px; font-weight: 700; color: var(--gray-900); margin: 16px 0;">From:
+                        $479.70 / 6 Hours</div>
+                    <button class="pricing-btn" style="margin-top: 0;">More Info</button>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1474722883778-792e7990302f?w=600&h=400&fit=crop');">
+                </div>
+                <div class="service-content">
+                    <h3>Private Lodi Wine Tasting Tour</h3>
+                    <p>Safe and reliable private limousine wine tasting tours of Lodi exclusive boutique wineries.</p>
+                    <div style="font-size: 18px; font-weight: 700; color: var(--gray-900); margin: 16px 0;">From:
+                        $479.70 / 6 Hours</div>
+                    <button class="pricing-btn" style="margin-top: 0;">More Info</button>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1423483641154-5411ec9c0ddf?w=600&h=400&fit=crop');">
+                </div>
+                <div class="service-content">
+                    <h3>Private Sonoma Valley Wine Tasting Tour</h3>
+                    <p>Safe and reliable private limousine wine tasting tours of Sonoma Valley's exclusive boutique
+                        wineries.</p>
+                    <div style="font-size: 18px; font-weight: 700; color: var(--gray-900); margin: 16px 0;">From:
+                        $479.70 / 6 Hours</div>
+                    <button class="pricing-btn" style="margin-top: 0;">More Info</button>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 48px;">
+            <a href="#" style="color: var(--navy); font-weight: 600; text-decoration: underline;">Load More Tours</a>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <div class="section-header" style="color: white;">
+            <h2>What Our Clients Say</h2>
+            <p style="color: rgba(255, 255, 255, 0.8);">Trusted by thousands of satisfied customers across Northern
+                California</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-rating">★★★★★</div>
+                <p class="testimonial-text">"Outstanding service from start to finish. The chauffeur was professional,
+                    the vehicle immaculate, and the entire experience was seamless. Highly recommend for corporate
+                    travel."</p>
+                <div class="testimonial-author">— Sarah Mitchell, CEO</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-rating">★★★★★</div>
+                <p class="testimonial-text">"Perfect for our wine tour! The driver was knowledgeable about the region
+                    and made our day incredibly special. Will definitely book again for future visits."</p>
+                <div class="testimonial-author">— James & Emily Chen</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-rating">★★★★★</div>
+                <p class="testimonial-text">"Reliable airport service every time. Never had a single issue in two years
+                    of regular bookings. The peace of mind is worth every penny."</p>
+                <div class="testimonial-author">— David Thompson</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations -->
+    <div class="destinations-section">
+        <div class="destinations-container">
+            <h3>Serving All of Northern California</h3>
+            <p class="destinations-subtitle">Premium limousine service across major cities, airports, and wine country
+                destinations</p>
+
+            <div class="destinations-grid">
+                <div class="destination-column">
+                    <h4>🌉 Bay Area</h4>
+                    <ul>
+                        <li><a href="#">San Francisco</a></li>
+                        <li><a href="#">Oakland</a></li>
+                        <li><a href="#">Berkeley</a></li>
+                        <li><a href="#">Palo Alto</a></li>
+                        <li><a href="#">San Jose</a></li>
+                        <li><a href="#">Fremont</a></li>
+                        <li><a href="#">Hayward</a></li>
+                        <li><a href="#">San Mateo</a></li>
+                        <li><a href="#">Redwood City</a></li>
+                        <li><a href="#">Sunnyvale</a></li>
+                    </ul>
+                </div>
+
+                <div class="destination-column">
+                    <h4>✈️ Airports</h4>
+                    <ul>
+                        <li><a href="#">SFO Airport</a></li>
+                        <li><a href="#">Oakland Airport</a></li>
+                        <li><a href="#">San Jose Airport</a></li>
+                        <li><a href="#">Sacramento Airport</a></li>
+                        <li><a href="#">Sonoma Airport</a></li>
+                        <li><a href="#">Monterey Airport</a></li>
+                        <li><a href="#">Airport Transfers</a></li>
+                        <li><a href="#">Meet & Greet</a></li>
+                        <li><a href="#">Flight Tracking</a></li>
+                        <li><a href="#">VIP Service</a></li>
+                    </ul>
+                </div>
+
+                <div class="destination-column">
+                    <h4>🍷 Wine Country</h4>
+                    <ul>
+                        <li><a href="#">Napa Valley</a></li>
+                        <li><a href="#">Sonoma County</a></li>
+                        <li><a href="#">Livermore Valley</a></li>
+                        <li><a href="#">St. Helena</a></li>
+                        <li><a href="#">Yountville</a></li>
+                        <li><a href="#">Calistoga</a></li>
+                        <li><a href="#">Healdsburg</a></li>
+                        <li><a href="#">Russian River</a></li>
+                        <li><a href="#">Dry Creek</a></li>
+                        <li><a href="#">Alexander Valley</a></li>
+                    </ul>
+                </div>
+
+                <div class="destination-column">
+                    <h4>🏙️ Silicon Valley</h4>
+                    <ul>
+                        <li><a href="#">San Jose</a></li>
+                        <li><a href="#">Santa Clara</a></li>
+                        <li><a href="#">Cupertino</a></li>
+                        <li><a href="#">Mountain View</a></li>
+                        <li><a href="#">Sunnyvale</a></li>
+                        <li><a href="#">Palo Alto</a></li>
+                        <li><a href="#">Menlo Park</a></li>
+                        <li><a href="#">Los Altos</a></li>
+                        <li><a href="#">Milpitas</a></li>
+                        <li><a href="#">Campbell</a></li>
+                    </ul>
+                </div>
+
+                <div class="destination-column">
+                    <h4>🌊 North Bay</h4>
+                    <ul>
+                        <li><a href="#">Santa Rosa</a></li>
+                        <li><a href="#">San Rafael</a></li>
+                        <li><a href="#">Novato</a></li>
+                        <li><a href="#">Petaluma</a></li>
+                        <li><a href="#">Vallejo</a></li>
+                        <li><a href="#">Fairfield</a></li>
+                        <li><a href="#">Sausalito</a></li>
+                        <li><a href="#">Tiburon</a></li>
+                        <li><a href="#">Mill Valley</a></li>
+                        <li><a href="#">Larkspur</a></li>
+                    </ul>
+                </div>
+
+                <div class="destination-column">
+                    <h4>🏛️ East Bay</h4>
+                    <ul>
+                        <li><a href="#">Walnut Creek</a></li>
+                        <li><a href="#">Concord</a></li>
+                        <li><a href="#">Pleasanton</a></li>
+                        <li><a href="#">Livermore</a></li>
+                        <li><a href="#">Dublin</a></li>
+                        <li><a href="#">San Ramon</a></li>
+                        <li><a href="#">Danville</a></li>
+                        <li><a href="#">Lafayette</a></li>
+                        <li><a href="#">Antioch</a></li>
+                        <li><a href="#">Martinez</a></li>
+                    </ul>
+                </div>
+
+                <div class="destination-column">
+                    <h4>🏔️ Sacramento</h4>
+                    <ul>
+                        <li><a href="#">Sacramento</a></li>
+                        <li><a href="#">Elk Grove</a></li>
+                        <li><a href="#">Roseville</a></li>
+                        <li><a href="#">Folsom</a></li>
+                        <li><a href="#">Davis</a></li>
+                        <li><a href="#">Rocklin</a></li>
+                        <li><a href="#">Citrus Heights</a></li>
+                        <li><a href="#">Rancho Cordova</a></li>
+                        <li><a href="#">Auburn</a></li>
+                        <li><a href="#">Woodland</a></li>
+                    </ul>
+                </div>
+
+                <div class="destination-column">
+                    <h4>🎯 Popular</h4>
+                    <ul>
+                        <li><a href="#">Golden Gate Bridge</a></li>
+                        <li><a href="#">Alcatraz Island</a></li>
+                        <li><a href="#">Lake Tahoe</a></li>
+                        <li><a href="#">Yosemite Park</a></li>
+                        <li><a href="#">Muir Woods</a></li>
+                        <li><a href="#">Carmel</a></li>
+                        <li><a href="#">Monterey</a></li>
+                        <li><a href="#">Big Sur</a></li>
+                        <li><a href="#">Santa Cruz</a></li>
+                        <li><a href="#">Stanford</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">5 STARS <span>LIMO</span></div>
+                <p>Premium limousine and transportation services across Northern California. Experience luxury,
+                    reliability, and professional service since 2005.</p>
+                <div class="footer-phone">1-877-435-5466</div>
+                <div class="social-links">
+                    <a href="#">f</a>
+                    <a href="#">t</a>
+                    <a href="#">i</a>
+                    <a href="#">y</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Our Fleet</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Book Online</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Airport Transfers</a></li>
+                    <li><a href="#">Corporate Travel</a></li>
+                    <li><a href="#">Wine Tours</a></li>
+                    <li><a href="#">Weddings</a></li>
+                    <li><a href="#">Special Events</a></li>
+                    <li><a href="#">Hourly Charter</a></li>
+                    <li><a href="#">City Tours</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">San Francisco Office</a></li>
+                    <li><a href="#">Oakland Office</a></li>
+                    <li><a href="#">San Jose Office</a></li>
+                    <li><a href="#">Email Us</a></li>
+                    <li><a href="#">Request Quote</a></li>
+                    <li><a href="#">Customer Support</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 5 Stars Limousine. All Rights Reserved. | Tour #2575
+        </div>
+    </footer>
+
+    <script>
+        function incrementPassengers() {
+            const input = document.getElementById('passengers');
+            input.value = parseInt(input.value) + 1;
+        }
+
+        function decrementPassengers() {
+            const input = document.getElementById('passengers');
+            if (input.value > 1) {
+                input.value = parseInt(input.value) - 1;
+            }
+        }
+
+        function incrementLuggage() {
+            const input = document.getElementById('luggage');
+            input.value = parseInt(input.value) + 1;
+        }
+
+        function decrementLuggage() {
+            const input = document.getElementById('luggage');
+            if (input.value > 0) {
+                input.value = parseInt(input.value) - 1;
+            }
+        }
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileMenu').classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Hero Background Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const totalSlides = slides.length;
+
+        function changeSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % totalSlides;
+            slides[currentSlide].classList.add('active');
+        }
+
+        // Change slide every 6 seconds
+        if (slides.length > 0) {
+            setInterval(changeSlide, 6000);
+        }
+    </script>
+</body>
+
+</html>
