@@ -12,6 +12,11 @@
             box-sizing: border-box;
         }
 
+        html,
+        body {
+            overflow-x: hidden;
+        }
+
         :root {
             --primary-green: #4CAF50;
             --dark-green: #2E7D32;
@@ -36,12 +41,12 @@
             background: var(--cream);
         }
 
-        /* Top Bar */
+        /* Promotional Top Bar */
         .top-bar {
-            background: var(--navy);
+            background: #000000;
             color: var(--white);
-            padding: 12px 0;
-            font-size: 14px;
+            padding: 10px 0;
+            font-size: 13px;
         }
 
         .top-bar-container {
@@ -49,19 +54,48 @@
             margin: 0 auto;
             padding: 0 24px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
+            position: relative;
         }
 
-        .top-bar-info {
-            display: flex;
-            gap: 32px;
+        .promo-text {
+            color: #7ED321;
+            font-weight: 700;
+            margin-right: 8px;
         }
 
-        .top-bar-info span {
+        .promo-link {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        .promo-link:hover {
+            opacity: 0.8;
+        }
+
+        .close-promo {
+            position: absolute;
+            right: 24px;
+            background: rgba(255, 255, 255, 0.4);
+            border: none;
+            color: #000;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 1;
+            padding: 0;
+            padding-bottom: 2px;
+        }
+
+        .close-promo:hover {
+            background: rgba(255, 255, 255, 0.8);
         }
 
         /* Header */
@@ -229,8 +263,8 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            right: 0;
+            bottom: 0;
             z-index: 0;
         }
 
@@ -238,8 +272,8 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            right: 0;
+            bottom: 0;
             opacity: 0;
             transition: opacity 1.5s ease-in-out;
             background-size: cover;
@@ -499,45 +533,71 @@
 
         /* Why Choose Us Section */
         .why-choose-section {
-            padding: 80px 24px;
-            background: var(--white);
+            padding: 60px 24px 80px;
+            background: var(--cream);
+            position: relative;
+        }
+
+        /* Dark navy band behind the top half of the cards */
+        .why-choose-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(26, 35, 50, 0.95), rgba(44, 62, 80, 0.95));
+            z-index: 0;
         }
 
         .why-choose-container {
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .why-choose-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 48px;
+            gap: 40px;
         }
 
         .why-choose-card {
-            text-align: center;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+            text-align: left;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .why-choose-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.18);
         }
 
         .why-choose-image {
             width: 100%;
-            height: 220px;
+            height: 240px;
             background-size: cover;
             background-position: center;
-            border-radius: 12px;
-            margin-bottom: 24px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .why-choose-content {
+            padding: 32px 24px;
         }
 
         .why-choose-card h3 {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 700;
             color: var(--navy);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         .why-choose-card p {
             color: var(--gray-700);
-            line-height: 1.7;
+            line-height: 1.6;
             font-size: 15px;
         }
 
@@ -1086,12 +1146,12 @@
 
         /* Destinations */
         .destinations-section {
-            background: var(--navy-light);
-            padding: 64px 24px;
+            background: var(--navy);
+            padding: 80px 24px;
         }
 
         .destinations-container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -1158,6 +1218,202 @@
         }
 
         /* Responsive */
+
+        /* Blog Section */
+        .blog-section {
+            padding: 80px 24px;
+            background: var(--cream);
+        }
+
+        .blog-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .blog-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .blog-date {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            text-align: center;
+            line-height: 1.2;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-date span {
+            display: block;
+            font-size: 20px;
+        }
+
+        .blog-content {
+            padding: 32px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-category {
+            color: var(--primary-green);
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .blog-content h3 {
+            font-size: 22px;
+            margin-bottom: 16px;
+            color: var(--navy);
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .blog-content p {
+            color: var(--gray-700);
+            line-height: 1.7;
+            margin-bottom: 24px;
+            font-size: 15px;
+            flex-grow: 1;
+        }
+
+        .read-article {
+            color: var(--navy);
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s, gap 0.3s;
+            font-size: 15px;
+        }
+
+        .read-article:hover {
+            color: var(--primary-green);
+            gap: 12px;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            padding: 100px 24px;
+            background: linear-gradient(135deg, var(--navy), var(--charcoal));
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at top right, rgba(76, 175, 80, 0.15), transparent 50%);
+            z-index: 1;
+        }
+
+        .newsletter-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .newsletter-container h2 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .newsletter-container p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .newsletter-form input {
+            flex-grow: 1;
+            padding: 18px 24px;
+            border-radius: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--white);
+            font-size: 16px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            outline: none;
+        }
+
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .newsletter-form input:focus {
+            border-color: var(--primary-green);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .newsletter-form button {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--white);
+            padding: 18px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+            white-space: nowrap;
+        }
+
+        .newsletter-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(76, 175, 80, 0.4);
+        }
+
         @media (max-width: 1200px) {
             .destinations-grid {
                 grid-template-columns: repeat(4, 1fr);
@@ -1187,13 +1443,15 @@
             }
 
             .hero {
-                padding: 60px 24px 60px;
+                padding: 60px 16px 60px;
                 min-height: auto;
             }
 
             .hero-container {
                 grid-template-columns: 1fr;
                 gap: 40px;
+                padding: 0;
+                width: 100%;
             }
 
             .hero-content h1 {
@@ -1260,6 +1518,19 @@
             }
         }
 
+
+        @media (max-width: 968px) {
+            .destinations-grid-flat {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .destinations-grid-flat {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 640px) {
             .destinations-grid {
                 grid-template-columns: 1fr;
@@ -1291,20 +1562,284 @@
                 font-size: 18px;
             }
         }
+
+        /* Updated Destinations Styling for Flat List Theme */
+        .destinations-grid-flat {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px 40px;
+            list-style: none;
+        }
+
+        .destinations-grid-flat li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 15px;
+            transition: all 0.3s;
+            display: inline-block;
+            padding: 4px 0;
+            border-bottom: 1px solid transparent;
+        }
+
+        .destinations-grid-flat li a:hover {
+            color: var(--white);
+            border-bottom-color: var(--primary-green);
+        }
+
+        .destinations-section h3 {
+            color: var(--primary-green);
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .view-all-link {
+            display: inline-block;
+            margin-top: 48px;
+            color: #00bcd4;
+            /* Cyan color matching image */
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: color 0.3s;
+            text-align: left;
+        }
+
+        .view-all-link:hover {
+            color: #fff;
+        }
+
+        /* ===== Blog Section ===== */
+        .blog-section {
+            padding: 80px 24px;
+            background: var(--cream);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .blog-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
+        }
+
+        .blog-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .blog-date {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 8px 14px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .blog-date span {
+            display: block;
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        .blog-content {
+            padding: 24px;
+        }
+
+        .blog-category {
+            display: inline-block;
+            background: rgba(76, 175, 80, 0.1);
+            color: var(--dark-green);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .blog-content h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .blog-content p {
+            font-size: 14px;
+            color: var(--gray-700);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .read-article {
+            color: var(--primary-green);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .read-article:hover {
+            color: var(--dark-green);
+        }
+
+        /* ===== Newsletter Section ===== */
+        .newsletter-section {
+            padding: 80px 24px;
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            text-align: center;
+        }
+
+        .newsletter-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .newsletter-container h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .newsletter-container p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 16px 20px;
+            border: none;
+            border-radius: 30px;
+            font-size: 15px;
+            outline: none;
+            background: var(--white);
+            color: var(--gray-900);
+        }
+
+        .newsletter-form input::placeholder {
+            color: var(--gray-500);
+        }
+
+        .newsletter-form button {
+            padding: 16px 32px;
+            background: var(--navy);
+            color: var(--white);
+            border: none;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .newsletter-form button:hover {
+            background: var(--charcoal);
+            transform: translateY(-2px);
+        }
+
+        /* ===== Blog & Newsletter Responsive ===== */
+        @media (max-width: 968px) {
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .newsletter-container h2 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .blog-section {
+                padding: 48px 16px;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .blog-image {
+                height: 180px;
+            }
+
+            .blog-content h3 {
+                font-size: 18px;
+            }
+
+            .newsletter-section {
+                padding: 48px 16px;
+            }
+
+            .newsletter-container h2 {
+                font-size: 24px;
+            }
+
+            .newsletter-container p {
+                font-size: 14px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input {
+                width: 100%;
+                text-align: center;
+            }
+
+            .newsletter-form button {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <!-- Top Bar -->
-    <div class="top-bar">
+    <!-- Promotional Top Bar -->
+    <div class="top-bar" id="promoTopBar">
         <div class="top-bar-container">
-            <div class="top-bar-info">
-                <span>📍 San Francisco Bay Area</span>
-                <span>✉️ [email protected]</span>
-            </div>
-            <div>
-                <span>📞 Call Us: 1-877-435-5466</span>
-            </div>
+            <span class="promo-text">Book Online and Get 10% OFF, PROMO CODE: FRIENDS10</span>
+            <a href="#" class="promo-link">Learn More..</a>
+            <button class="close-promo" onclick="document.getElementById('promoTopBar').style.display='none'"
+                aria-label="Close Promo">×</button>
         </div>
     </div>
 
@@ -1452,25 +1987,32 @@
                     <div class="why-choose-image"
                         style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=400&fit=crop');">
                     </div>
-                    <h3>Quality</h3>
-                    <p>Delivering accurate, reliable, and compliant financial services with integrity and attention to
-                        detail; ensuring clients' trust, transparency, and long-term success.</p>
+                    <div class="why-choose-content">
+                        <h3>Quality</h3>
+                        <p>Delivering accurate, reliable, and compliant financial services with integrity and attention
+                            to
+                            detail; ensuring clients' trust, transparency, and long-term success.</p>
+                    </div>
                 </div>
                 <div class="why-choose-card">
                     <div class="why-choose-image"
                         style="background-image: url('https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&h=400&fit=crop');">
                     </div>
-                    <h3>Experience</h3>
-                    <p>Extensive experience providing trusted accounting, tax, and financial advisory services with
-                        precision, integrity, and a deep understanding of business needs.</p>
+                    <div class="why-choose-content">
+                        <h3>Experience</h3>
+                        <p>Extensive experience providing trusted accounting, tax, and financial advisory services with
+                            precision, integrity, and a deep understanding of business needs.</p>
+                    </div>
                 </div>
                 <div class="why-choose-card">
                     <div class="why-choose-image"
                         style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=400&fit=crop');">
                     </div>
-                    <h3>Commitment</h3>
-                    <p>Prioritizing your success, we uphold the highest ethical standards and support your business
-                        growth with integrity, accuracy, and precision.</p>
+                    <div class="why-choose-content">
+                        <h3>Commitment</h3>
+                        <p>Prioritizing your success, we uphold the highest ethical standards and support your business
+                            growth with integrity, accuracy, and precision.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1707,144 +2249,141 @@
         </div>
     </section>
 
+
+    <!-- Blog Section -->
+    <section class="blog-section" id="blog">
+        <div class="section-header">
+            <h2>Latest Insights, Travel Tips & News</h2>
+            <p style="color: var(--primary-green); font-weight: 600; text-transform: uppercase; letter-spacing: 2px;">
+                Stay updated with the luxury transportation world</p>
+        </div>
+
+        <div class="blog-grid">
+            <!-- Article 1 -->
+            <article class="blog-card">
+                <div class="blog-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1550516421-2a0e2ee3f2a1?w=600&h=400&fit=crop');">
+                    <div class="blog-date">
+                        <span>15</span>
+                        Oct
+                    </div>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-category">Travel Tips</div>
+                    <h3>Top 5 Wineries to Visit in Napa Valley This Fall</h3>
+                    <p>Discover the most exclusive and picturesque vineyards for your next private luxury wine tasting
+                        tour in the heart of wine country.</p>
+                    <a href="#" class="read-article">Read Article →</a>
+                </div>
+            </article>
+
+            <!-- Article 2 -->
+            <article class="blog-card">
+                <div class="blog-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&h=400&fit=crop');">
+                    <div class="blog-date">
+                        <span>08</span>
+                        Oct
+                    </div>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-category">Corporate</div>
+                    <h3>Why Executive Car Services Boost Business Productivity</h3>
+                    <p>Learn how providing reliable, premium transportation for executives directly impacts deal
+                        closures, punctuality, and overall company prestige.</p>
+                    <a href="#" class="read-article">Read Article →</a>
+                </div>
+            </article>
+
+            <!-- Article 3 -->
+            <article class="blog-card">
+                <div class="blog-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=400&fit=crop');">
+                    <div class="blog-date">
+                        <span>29</span>
+                        Sep
+                    </div>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-category">Events</div>
+                    <h3>Planning the Perfect Bachelorette Party Transportation</h3>
+                    <p>Make the bride-to-be's final night out safe, stylish, and unforgettable with our guide to booking
+                        the ultimate party limousine.</p>
+                    <a href="#" class="read-article">Read Article →</a>
+                </div>
+            </article>
+        </div>
+
+        <div style="text-align: center; margin-top: 48px;">
+            <a href="#" style="color: var(--navy); font-weight: 600; text-decoration: underline;">View All Articles</a>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="newsletter-container">
+            <h2>Join the 5 Stars Limo Elite Club</h2>
+            <p>Subscribe to our newsletter to receive exclusive promotions, travel tips, and updates on our expanding
+                luxury fleet straight to your inbox.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                <input type="email" placeholder="Enter your best email address" required>
+                <button type="submit">Subscribe Now</button>
+            </form>
+        </div>
+    </section>
+
     <!-- Destinations -->
     <div class="destinations-section">
         <div class="destinations-container">
-            <h3>Serving All of Northern California</h3>
-            <p class="destinations-subtitle">Premium limousine service across major cities, airports, and wine country
-                destinations</p>
+            <h3>Destinations</h3>
 
-            <div class="destinations-grid">
-                <div class="destination-column">
-                    <h4>🌉 Bay Area</h4>
-                    <ul>
-                        <li><a href="#">San Francisco</a></li>
-                        <li><a href="#">Oakland</a></li>
-                        <li><a href="#">Berkeley</a></li>
-                        <li><a href="#">Palo Alto</a></li>
-                        <li><a href="#">San Jose</a></li>
-                        <li><a href="#">Fremont</a></li>
-                        <li><a href="#">Hayward</a></li>
-                        <li><a href="#">San Mateo</a></li>
-                        <li><a href="#">Redwood City</a></li>
-                        <li><a href="#">Sunnyvale</a></li>
-                    </ul>
-                </div>
+            <ul class="destinations-grid-flat">
+                <!-- Column 1 -->
+                <li><a href="#">Oakland International Airport (OAK)</a></li>
+                <li><a href="#">San Francisco International Airport (SFO)</a></li>
+                <li><a href="#">San Jose Mineta International Airport (SJC)</a></li>
+                <li><a href="#">Sacramento International Airport (SMF)</a></li>
+                <li><a href="#">Escalon, CA</a></li>
 
-                <div class="destination-column">
-                    <h4>✈️ Airports</h4>
-                    <ul>
-                        <li><a href="#">SFO Airport</a></li>
-                        <li><a href="#">Oakland Airport</a></li>
-                        <li><a href="#">San Jose Airport</a></li>
-                        <li><a href="#">Sacramento Airport</a></li>
-                        <li><a href="#">Sonoma Airport</a></li>
-                        <li><a href="#">Monterey Airport</a></li>
-                        <li><a href="#">Airport Transfers</a></li>
-                        <li><a href="#">Meet & Greet</a></li>
-                        <li><a href="#">Flight Tracking</a></li>
-                        <li><a href="#">VIP Service</a></li>
-                    </ul>
-                </div>
+                <!-- Column 2 -->
+                <li><a href="#">Lathrop, CA</a></li>
+                <li><a href="#">Lodi, CA</a></li>
+                <li><a href="#">Manteca, CA</a></li>
+                <li><a href="#">Mountain House, CA</a></li>
+                <li><a href="#">Ripon, CA</a></li>
 
-                <div class="destination-column">
-                    <h4>🍷 Wine Country</h4>
-                    <ul>
-                        <li><a href="#">Napa Valley</a></li>
-                        <li><a href="#">Sonoma County</a></li>
-                        <li><a href="#">Livermore Valley</a></li>
-                        <li><a href="#">St. Helena</a></li>
-                        <li><a href="#">Yountville</a></li>
-                        <li><a href="#">Calistoga</a></li>
-                        <li><a href="#">Healdsburg</a></li>
-                        <li><a href="#">Russian River</a></li>
-                        <li><a href="#">Dry Creek</a></li>
-                        <li><a href="#">Alexander Valley</a></li>
-                    </ul>
-                </div>
+                <!-- Column 3 -->
+                <li><a href="#">Stockton, CA</a></li>
+                <li><a href="#">Tracy, CA</a></li>
+                <li><a href="#">Oakland, CA</a></li>
+                <li><a href="#">Fremont, CA</a></li>
+                <li><a href="#">Hayward, CA</a></li>
 
-                <div class="destination-column">
-                    <h4>🏙️ Silicon Valley</h4>
-                    <ul>
-                        <li><a href="#">San Jose</a></li>
-                        <li><a href="#">Santa Clara</a></li>
-                        <li><a href="#">Cupertino</a></li>
-                        <li><a href="#">Mountain View</a></li>
-                        <li><a href="#">Sunnyvale</a></li>
-                        <li><a href="#">Palo Alto</a></li>
-                        <li><a href="#">Menlo Park</a></li>
-                        <li><a href="#">Los Altos</a></li>
-                        <li><a href="#">Milpitas</a></li>
-                        <li><a href="#">Campbell</a></li>
-                    </ul>
-                </div>
+                <!-- Expanded original list to fill column 4 appropriately -->
+                <li><a href="#">Berkeley, CA</a></li>
+                <li><a href="#">San Leandro, CA</a></li>
+                <li><a href="#">Livermore, CA</a></li>
+                <li><a href="#">Alameda, CA</a></li>
+                <li><a href="#">Pleasanton, CA</a></li>
 
-                <div class="destination-column">
-                    <h4>🌊 North Bay</h4>
-                    <ul>
-                        <li><a href="#">Santa Rosa</a></li>
-                        <li><a href="#">San Rafael</a></li>
-                        <li><a href="#">Novato</a></li>
-                        <li><a href="#">Petaluma</a></li>
-                        <li><a href="#">Vallejo</a></li>
-                        <li><a href="#">Fairfield</a></li>
-                        <li><a href="#">Sausalito</a></li>
-                        <li><a href="#">Tiburon</a></li>
-                        <li><a href="#">Mill Valley</a></li>
-                        <li><a href="#">Larkspur</a></li>
-                    </ul>
-                </div>
+                <!-- Additional locations to fill out the grid nicely  -->
+                <li><a href="#">Napa Valley, CA</a></li>
+                <li><a href="#">Santa Rosa, CA</a></li>
+                <li><a href="#">Sonoma, CA</a></li>
+                <li><a href="#">Palo Alto, CA</a></li>
+                <li><a href="#">San Rafael, CA</a></li>
 
-                <div class="destination-column">
-                    <h4>🏛️ East Bay</h4>
-                    <ul>
-                        <li><a href="#">Walnut Creek</a></li>
-                        <li><a href="#">Concord</a></li>
-                        <li><a href="#">Pleasanton</a></li>
-                        <li><a href="#">Livermore</a></li>
-                        <li><a href="#">Dublin</a></li>
-                        <li><a href="#">San Ramon</a></li>
-                        <li><a href="#">Danville</a></li>
-                        <li><a href="#">Lafayette</a></li>
-                        <li><a href="#">Antioch</a></li>
-                        <li><a href="#">Martinez</a></li>
-                    </ul>
-                </div>
+                <li><a href="#">Cupertino, CA</a></li>
+                <li><a href="#">Sunnyvale, CA</a></li>
+                <li><a href="#">Novato, CA</a></li>
+                <li><a href="#">Roseville, CA</a></li>
+                <li><a href="#">Menlo Park, CA</a></li>
+            </ul>
 
-                <div class="destination-column">
-                    <h4>🏔️ Sacramento</h4>
-                    <ul>
-                        <li><a href="#">Sacramento</a></li>
-                        <li><a href="#">Elk Grove</a></li>
-                        <li><a href="#">Roseville</a></li>
-                        <li><a href="#">Folsom</a></li>
-                        <li><a href="#">Davis</a></li>
-                        <li><a href="#">Rocklin</a></li>
-                        <li><a href="#">Citrus Heights</a></li>
-                        <li><a href="#">Rancho Cordova</a></li>
-                        <li><a href="#">Auburn</a></li>
-                        <li><a href="#">Woodland</a></li>
-                    </ul>
-                </div>
-
-                <div class="destination-column">
-                    <h4>🎯 Popular</h4>
-                    <ul>
-                        <li><a href="#">Golden Gate Bridge</a></li>
-                        <li><a href="#">Alcatraz Island</a></li>
-                        <li><a href="#">Lake Tahoe</a></li>
-                        <li><a href="#">Yosemite Park</a></li>
-                        <li><a href="#">Muir Woods</a></li>
-                        <li><a href="#">Carmel</a></li>
-                        <li><a href="#">Monterey</a></li>
-                        <li><a href="#">Big Sur</a></li>
-                        <li><a href="#">Santa Cruz</a></li>
-                        <li><a href="#">Stanford</a></li>
-                    </ul>
-                </div>
-            </div>
+            <a href="#" class="view-all-link">View all destinations</a>
         </div>
     </div>
+
 
     <!-- Footer -->
     <footer id="contact">
