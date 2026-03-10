@@ -50,7 +50,7 @@
         }
 
         .top-bar-container {
-            max-width: 1200px;
+            max-width: 95%;
             margin: 0 auto;
             padding: 0 24px;
             display: flex;
@@ -126,7 +126,7 @@
         }
 
         .header-container {
-            max-width: 1200px;
+            max-width: 95%;
             margin: 0 auto;
             padding: 0 24px;
             display: flex;
@@ -308,7 +308,7 @@
         }
 
         .hero-container {
-            max-width: 1200px;
+            max-width: 95%;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -326,6 +326,7 @@
             justify-content: center;
             position: relative;
             z-index: 10;
+            animation: fadeUp 0.8s ease-out 0.2s both;
         }
 
         .booking-form {
@@ -396,6 +397,8 @@
             max-width: 450px;
             position: relative;
             z-index: 10;
+            justify-self: end;
+            animation: fadeUp 0.8s ease-out 0.4s both;
         }
 
         .booking-form h3 {
@@ -551,7 +554,7 @@
         }
 
         .why-choose-container {
-            max-width: 1200px;
+            max-width: 1440px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
@@ -636,7 +639,7 @@
         }
 
         .vehicles-grid {
-            max-width: 1200px;
+            max-width: 1440px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -804,7 +807,7 @@
         }
 
         .services-grid {
-            max-width: 1200px;
+            max-width: 1440px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -869,7 +872,7 @@
         }
 
         .pricing-grid {
-            max-width: 1200px;
+            max-width: 1440px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -1009,7 +1012,7 @@
         }
 
         .testimonials-grid {
-            max-width: 1200px;
+            max-width: 1440px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -1050,7 +1053,7 @@
         }
 
         .footer-container {
-            max-width: 1200px;
+            max-width: 1440px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1133,7 +1136,7 @@
 
         /* Masonry Grid Styles */
         .masonry-grid {
-            max-width: 1200px;
+            max-width: 1440px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -1151,7 +1154,7 @@
         }
 
         .destinations-container {
-            max-width: 1200px;
+            max-width: 1440px;
             margin: 0 auto;
         }
 
@@ -1226,7 +1229,7 @@
         }
 
         .blog-grid {
-            max-width: 1200px;
+            max-width: 1440px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -1325,96 +1328,132 @@
 
         /* Newsletter Section */
         .newsletter-section {
-            padding: 100px 24px;
-            background: linear-gradient(135deg, var(--navy), var(--charcoal));
-            color: var(--white);
+            padding: 80px 24px;
+            background: #4CAF50;
             position: relative;
             overflow: hidden;
         }
 
-        .newsletter-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at top right, rgba(76, 175, 80, 0.15), transparent 50%);
-            z-index: 1;
-        }
-
         .newsletter-container {
-            max-width: 800px;
+            max-width: 1440px;
             margin: 0 auto;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
             position: relative;
             z-index: 2;
+            flex-direction: row-reverse;
         }
 
-        .newsletter-container h2 {
-            font-size: 42px;
+        .newsletter-content {
+            flex: 1;
+            text-align: left;
+            color: var(--white);
+            max-width: 600px;
+        }
+
+        .newsletter-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            mix-blend-mode: multiply;
+            filter: contrast(1.1);
+        }
+
+        .newsletter-image img {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+            max-height: 500px;
+        }
+
+        .newsletter-content h2 {
+            font-size: 48px;
             font-weight: 800;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             line-height: 1.2;
         }
 
-        .newsletter-container p {
-            font-size: 18px;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 40px;
+        .newsletter-content p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 32px;
             line-height: 1.6;
         }
 
         .newsletter-form {
             display: flex;
             gap: 16px;
-            max-width: 600px;
-            margin: 0 auto;
             position: relative;
+            width: 100%;
         }
 
         .newsletter-form input {
             flex-grow: 1;
-            padding: 18px 24px;
+            padding: 22px 30px;
             border-radius: 30px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--white);
-            font-size: 16px;
-            backdrop-filter: blur(10px);
+            border: none;
+            background: var(--white);
+            color: var(--gray-900);
+            font-size: 18px;
             transition: all 0.3s;
             outline: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
 
         .newsletter-form input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--gray-500);
         }
 
         .newsletter-form input:focus {
-            border-color: var(--primary-green);
-            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
 
         .newsletter-form button {
-            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            background: var(--navy);
             color: var(--white);
-            padding: 18px 40px;
+            padding: 22px 48px;
             border: none;
             border-radius: 30px;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+            box-shadow: 0 8px 25px rgba(26, 35, 50, 0.3);
             white-space: nowrap;
         }
 
         .newsletter-form button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(76, 175, 80, 0.4);
+            background: var(--charcoal);
+            box-shadow: 0 12px 35px rgba(26, 35, 50, 0.4);
         }
 
-        @media (max-width: 1200px) {
+        @media (max-width: 968px) {
+            .newsletter-container {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .newsletter-content {
+                text-align: center;
+                max-width: 100%;
+                margin-bottom: 32px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form button {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 1440px) {
             .destinations-grid {
                 grid-template-columns: repeat(4, 1fr);
             }
@@ -1621,7 +1660,7 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 32px;
-            max-width: 1200px;
+            max-width: 1440px;
             margin: 0 auto;
         }
 
@@ -1707,72 +1746,6 @@
 
         .read-article:hover {
             color: var(--dark-green);
-        }
-
-        /* ===== Newsletter Section ===== */
-        .newsletter-section {
-            padding: 80px 24px;
-            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
-            text-align: center;
-        }
-
-        .newsletter-container {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .newsletter-container h2 {
-            font-size: 36px;
-            font-weight: 800;
-            color: var(--white);
-            margin-bottom: 16px;
-        }
-
-        .newsletter-container p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 32px;
-        }
-
-        .newsletter-form {
-            display: flex;
-            gap: 12px;
-            max-width: 520px;
-            margin: 0 auto;
-        }
-
-        .newsletter-form input {
-            flex: 1;
-            padding: 16px 20px;
-            border: none;
-            border-radius: 30px;
-            font-size: 15px;
-            outline: none;
-            background: var(--white);
-            color: var(--gray-900);
-        }
-
-        .newsletter-form input::placeholder {
-            color: var(--gray-500);
-        }
-
-        .newsletter-form button {
-            padding: 16px 32px;
-            background: var(--navy);
-            color: var(--white);
-            border: none;
-            border-radius: 30px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            white-space: nowrap;
-        }
-
-        .newsletter-form button:hover {
-            background: var(--charcoal);
-            transform: translateY(-2px);
         }
 
         /* ===== Blog & Newsletter Responsive ===== */
@@ -2090,7 +2063,7 @@
         </div>
 
         <div class="masonry-grid"
-            style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;">
+            style="max-width: 1440px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;">
             <!-- Wine Tasting Tour - Takes 2 rows -->
             <div class="service-card" style="grid-row: span 2; display: flex; flex-direction: column;">
                 <div class="service-image"
@@ -2322,13 +2295,19 @@
     <!-- Newsletter Section -->
     <section class="newsletter-section">
         <div class="newsletter-container">
-            <h2>Join the 5 Stars Limo Elite Club</h2>
-            <p>Subscribe to our newsletter to receive exclusive promotions, travel tips, and updates on our expanding
-                luxury fleet straight to your inbox.</p>
-            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
-                <input type="email" placeholder="Enter your best email address" required>
-                <button type="submit">Subscribe Now</button>
-            </form>
+            <div class="newsletter-content">
+                <h2>Join the 5 Stars Limo Elite Club</h2>
+                <p>Subscribe to our newsletter to receive exclusive promotions, travel tips, and updates on our
+                    expanding luxury fleet straight to your inbox.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                    <input type="email" placeholder="Enter your best email address" required>
+                    <button type="submit">Subscribe Now</button>
+                </form>
+            </div>
+            <div class="newsletter-image">
+                <img src="images/limo-van.png" alt="Luxury Limo Van" class="limo-van-img"
+                    style="transform: scaleX(-1);">
+            </div>
         </div>
     </section>
 
